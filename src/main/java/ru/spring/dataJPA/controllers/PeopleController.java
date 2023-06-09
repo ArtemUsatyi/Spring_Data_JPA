@@ -22,7 +22,6 @@ public class PeopleController {
 
     @GetMapping
     public String allPeople(Model model) {
-        System.out.println("привет");
         model.addAttribute("people", peopleServices.findAllPeople());
         return "people/allPeople";
     }
@@ -41,7 +40,6 @@ public class PeopleController {
     @PostMapping
     public String createPerson(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) return "people/newPerson";
-        System.out.println("привет");
         peopleServices.save(person);
         return "redirect:/people";
     }
